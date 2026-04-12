@@ -77,6 +77,9 @@ module FatFreeCRM
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
+    # Rails 8.1+ behaviour
+    config.active_support.to_time_preserves_timezone = :zone
+
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += %i[password encrypted_password password_salt password_confirmation]
 
