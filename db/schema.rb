@@ -207,6 +207,12 @@ ActiveRecord::Schema[7.1].define(version: 20260412062855) do
     t.datetime "updated_at", precision: nil
     t.string "background_info"
     t.text "subscribed_users"
+    t.string "zoom", limit: 128
+    t.string "teams", limit: 128
+    t.string "signal", limit: 128
+    t.string "instagram", limit: 128
+    t.string "mastodon", limit: 128
+    t.string "bluesky", limit: 128
     t.index ["assigned_to"], name: "index_contacts_on_assigned_to"
     t.index ["user_id", "last_name", "deleted_at"], name: "id_last_name_deleted", unique: true
   end
@@ -311,6 +317,12 @@ ActiveRecord::Schema[7.1].define(version: 20260412062855) do
     t.datetime "updated_at", precision: nil
     t.string "background_info"
     t.text "subscribed_users"
+    t.string "zoom", limit: 128
+    t.string "teams", limit: 128
+    t.string "signal", limit: 128
+    t.string "instagram", limit: 128
+    t.string "mastodon", limit: 128
+    t.string "bluesky", limit: 128
     t.index ["assigned_to"], name: "index_leads_on_assigned_to"
     t.index ["user_id", "last_name", "deleted_at"], name: "index_leads_on_user_id_and_last_name_and_deleted_at", unique: true
   end
@@ -464,6 +476,16 @@ ActiveRecord::Schema[7.1].define(version: 20260412062855) do
     t.datetime "confirmation_sent_at"
     t.boolean "subscribe_to_comment_replies", default: true, null: false
     t.boolean "receive_assigned_notifications", default: true, null: false
+    t.string "zoom", limit: 128
+    t.string "teams", limit: 128
+    t.string "signal", limit: 128
+    t.string "instagram", limit: 128
+    t.string "facebook", limit: 128
+    t.string "mastodon", limit: 128
+    t.string "bluesky", limit: 128
+    t.string "twitter", limit: 128
+    t.string "linkedin", limit: 128
+    t.string "blog", limit: 128
     t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email"

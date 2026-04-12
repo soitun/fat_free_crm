@@ -142,6 +142,16 @@ class UsersController < ApplicationController
       :phone,
       :mobile,
       :google,
+      :blog,
+      :facebook,
+      :twitter,
+      :linkedin,
+      :zoom,
+      :teams,
+      :signal,
+      :instagram,
+      :mastodon,
+      :bluesky,
       :subscribe_to_comment_replies,
       :receive_assigned_notifications
     )
