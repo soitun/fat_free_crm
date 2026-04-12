@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '>= 3.1'
   gem.license = 'MIT'
 
-  gem.add_dependency 'rails', '~> 7.2.3.1'
+  gem.add_dependency 'rails', '~> 8.0.0'
   gem.add_dependency 'rails-i18n'
   gem.add_dependency 'rails-observers'
   gem.add_dependency 'activemodel-serializers-xml'
@@ -42,7 +42,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'font-awesome-rails'
   gem.add_dependency 'premailer'
   gem.add_dependency 'nokogiri'
-  gem.add_dependency 'responds_to_parent'
+  gem.add_dependency 'responds_to_parent2'
   gem.add_dependency 'rails3-jquery-autocomplete'
   gem.add_dependency 'thor'
   gem.add_dependency 'rails_autolink'
