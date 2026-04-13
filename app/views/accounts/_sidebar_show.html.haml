@@ -20,9 +20,11 @@
     - if @account.fax
       == #{t :fax}: <b>#{link_to_phone(@account.fax)}</b><br />
 
+    - if @account.wikidata_id
+      %b= link_to t(:wikidata), "https://www.wikidata.org/wiki/#{@account.wikidata_id}", target: "_blank", rel: "noopener noreferrer"
+
     %div= render "shared/address_show", asset: @account, type: 'billing', title: :billing_address
     %div= render "shared/address_show", asset: @account, type: 'shipping', title: :shipping_address
-
 
   - if @account.latitude.present? && @account.longitude.present?
     #map{style: "width: 100%; height: 150px;"}
