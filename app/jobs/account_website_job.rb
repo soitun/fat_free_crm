@@ -38,6 +38,8 @@ class AccountWebsiteJob < ApplicationJob
         update_account_from_org(account, obj) if obj['@type'] == 'Organization'
       end
     end
+
+    WikidataJob.perform_later(account) if account.wikidata_id.present?
   end
 
   private
