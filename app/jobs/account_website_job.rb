@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'nokogiri'
 require 'json'
@@ -6,7 +8,7 @@ class AccountWebsiteJob < ApplicationJob
   queue_as :default
 
   def perform(account)
-    return unless account.website.present?
+    return if account.website.blank?
 
     uri = URI.parse(account.website)
     uri = URI.parse("http://#{account.website}") unless uri.scheme
@@ -30,14 +32,10 @@ class AccountWebsiteJob < ApplicationJob
       objects = data.is_a?(Array) ? data : [data]
 
       # Handle @graph
-      if data.is_a?(Hash) && data['@graph']
-        objects += data['@graph']
-      end
+      objects += data['@graph'] if data.is_a?(Hash) && data['@graph']
 
       objects.each do |obj|
-        if obj['@type'] == 'Organization'
-          update_account_from_org(account, obj)
-        end
+        update_account_from_org(account, obj) if obj['@type'] == 'Organization'
       end
     end
   end
@@ -51,6 +49,27 @@ class AccountWebsiteJob < ApplicationJob
     updates[:email] = org['email'] if account.email.blank? && org['email'].present?
     updates[:fax] = org['faxNumber'] if account.fax.blank? && org['faxNumber'].present?
 
+    if org['sameAs'].present?
+      Array(org['sameAs']).each do |url|
+        next unless url.is_a?(String)
+
+        case url
+        when %r{facebook\.com/}
+          updates[:facebook] ||= url if account.facebook.blank?
+        when %r{instagram\.com/}
+          updates[:instagram] ||= url if account.instagram.blank?
+        when %r{(twitter\.com|x\.com)/}
+          updates[:twitter] ||= url if account.twitter.blank?
+        when %r{linkedin\.com/}
+          updates[:linkedin] ||= url if account.linkedin.blank?
+        when %r{bsky\.app/}
+          updates[:bluesky] ||= url if account.bluesky.blank?
+        when /mastodon/
+          updates[:mastodon] ||= url if account.mastodon.blank?
+        end
+      end
+    end
+
     if org['geo'].present? && org['geo']['@type'] == 'GeoCoordinates'
       updates[:latitude] = org['geo']['latitude'].to_f if account.latitude.blank? && org['geo']['latitude'].present?
       updates[:longitude] = org['geo']['longitude'].to_f if account.longitude.blank? && org['geo']['longitude'].present?
@@ -61,14 +80,12 @@ class AccountWebsiteJob < ApplicationJob
       account.save(validate: false)
     end
 
-    if org['address'].present? && (org['address']['@type'] == 'PostalAddress' || org['address'].is_a?(Hash))
-      update_address(account, org['address'])
-    end
+    update_address(account, org['address']) if org['address'].present? && (org['address']['@type'] == 'PostalAddress' || org['address'].is_a?(Hash))
   end
 
   def update_address(account, addr_data)
     address = account.billing_address || account.addresses.new(address_type: 'Billing')
-    return unless address.blank?
+    return if address.present?
 
     address.street1 = addr_data['streetAddress'] if addr_data['streetAddress'].present?
     address.city = addr_data['addressLocality'] if addr_data['addressLocality'].present?
