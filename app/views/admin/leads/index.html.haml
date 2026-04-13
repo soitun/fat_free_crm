@@ -4,6 +4,16 @@
 .remote
   = form_tag import_admin_leads_path, multipart: true do
     .section
+      .subtitle
+        = t(:leads_import_help)
+      %p
+        = t(:leads_import_supported_headers)
+      %p
+        %strong= t(:leads_import_example_header)
+        %pre
+          = t(:leads_import_example_content)
+      %p
+        %em= t(:leads_import_note)
       %table
         %tr
           %td
