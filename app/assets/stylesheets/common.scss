@@ -154,14 +154,23 @@ $sidebar_width: 210px;
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 20px;
+  grid-column-gap: 0.5em;
 
   .label.req {
-    display: inherit;
+    display: inline-block;
   }
 
   input, select, textarea {
     width: 100%;
+  }
+  /** Styling, as per select2 */
+  input, textarea {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    line-height: 24px;
+    box-sizing: border-box;
   }
   .check_box input {
     width: auto;
@@ -264,7 +273,7 @@ $sidebar_width: 210px;
 .section input, .sidebar input, .inline input,
 .section select, .sidebar select, .inline select,
 .section textarea, .sidebar textarea, .inline textarea {
-  margin: 3px 0px 0px 0px;
+  margin: 0;
   vertical-align: middle; }
 
 .cool {
