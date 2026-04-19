@@ -20,7 +20,7 @@
           .label #{t :mobile}:
           = phone_field_with_pattern(f, :mobile)
         %div
-          = render "shared/address", f: f, asset: @contact, type: 'business', title: :address, grid: true
+          = render "shared/address", f: f, asset: @contact, type: 'business', title: :address
         %div
           .label #{t :fax}:
           = phone_field_with_pattern(f, :fax)
