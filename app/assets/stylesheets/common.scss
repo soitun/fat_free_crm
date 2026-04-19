@@ -154,7 +154,7 @@ $sidebar_width: 210px;
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 0.5em;
+  grid-column-gap: 1.5em;
 
   .label.req {
     display: inline-block;
@@ -184,8 +184,16 @@ $sidebar_width: 210px;
 .grid.grid-4-columns {
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
-
+.address-city-state {
+  display: grid; 
+  grid-template-columns: 1fr 0.2fr; 
+  grid-column-gap: 1em;
+}
+.address-zip-country {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr;
+  grid-column-gap: 1em;
+}
 /** Mobile grid */
 @media (max-width: 768px) {
   .grid {
