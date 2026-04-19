@@ -237,13 +237,13 @@ $sidebar_width: 210px;
       right: 1px grey solid; };
     color: navy;
     cursor: pointer;
-    height: 16px;
     margin: 3px;
     position: absolute;
     right: 0px;
     text-align: center;
     top: 0px;
-    width: 17px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     &:hover {
       background: #1e4262;
       color: white; } } }
