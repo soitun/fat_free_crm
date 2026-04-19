@@ -52,7 +52,7 @@ module AccountsHelper
         content_tag(:span, ':', id: 'account_disabled_title')
     end +
       account_select(options) +
-      form.text_field(:name, style: 'width:324px; display:none;')
+      form.text_field(:name, style: 'display:none;')
   end
 
   # Output account url for a given contact
