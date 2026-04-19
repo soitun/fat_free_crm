@@ -62,7 +62,7 @@ $color_footer: grey;
         color: white;
         padding: 0px 0px 4px 0px;
         &.selected {
-          color: navy; }
+          color: yellow; }
         &:hover {
           background: steelblue; } } }
     #jumpbox_label {
@@ -105,6 +105,12 @@ $color_footer: grey;
     background: $color_active_tab_background;
     color: $color_active_tab;
     text-decoration: none; } }
+
+@media (max-width: 768px) {
+.tabs {
+  a:link.active, a:visited.active {
+    color: yellow; } }
+}
 
 #footer {
   color: $color_footer;
