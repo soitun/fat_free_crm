@@ -151,6 +151,36 @@ $sidebar_width: 210px;
   color: dimgray;
   padding-top: 5px; }
 
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+
+  .label.req {
+    display: inherit;
+  }
+
+  input, select, textarea {
+    width: 100%;
+  }
+  .check_box input {
+    width: auto;
+  }
+  .select2-container { width: 100% !important; }
+
+  .row-full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+/** Mobile grid */
+@media (max-width: 768px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
 .section {
   background-color: whitesmoke;
   color: #3f3f3f;
