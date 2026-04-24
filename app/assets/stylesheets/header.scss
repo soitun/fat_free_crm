@@ -76,40 +76,74 @@ $color_footer: grey;
   i.fa { 
     font-size: 130%; 
     vertical-align:text-top; }
+
+  // Offcanvas header and title colors
+  .offcanvas-header {
+    background: $color_header_background;
+    color: $color_logo;
+  }
+
   ul {
     margin-left: 15px; }
   li {
     list-style: none;
     margin: 0px 4px 0px 1px; }
-  a:link, a:visited {
-    img {
-      background: none;
-      vertical-align: bottom;
-      float: none;
-      margin-right: 7px; }
-    background: $color_tab_background;
-    color: white;
-    padding: 4px 15px 6px;
-    text-align: center;
-    text-decoration: none;
-    -moz-border-radius: {
-      topleft: 3px;
-      topright: 3px; };
-    -webkit-border-top: {
-      left-radius: 3px;
-      right-radius: 3px; }; }
-  a:hover {
-    background: $color_hover_tab_background;
-    color: $color_hover_tab; }
-  a:link.active, a:visited.active {
-    background: $color_active_tab_background;
-    color: $color_active_tab;
-    text-decoration: none; } }
 
-@media (max-width: 768px) {
-.tabs {
-  a:link.active, a:visited.active {
-    color: yellow; } }
+  // Desktop styles
+  @media (min-width: 992px) {
+    a:link, a:visited {
+      img {
+        background: none;
+        vertical-align: bottom;
+        float: none;
+        margin-right: 7px; }
+      background: $color_tab_background;
+      color: white;
+      padding: 4px 15px 6px;
+      text-align: center;
+      text-decoration: none;
+      -moz-border-radius: {
+        topleft: 3px;
+        topright: 3px; };
+      -webkit-border-top: {
+        left-radius: 3px;
+        right-radius: 3px; }; }
+    a:hover {
+      background: $color_hover_tab_background;
+      color: $color_hover_tab; }
+    a:link.active, a:visited.active {
+      background: $color_active_tab_background;
+      color: $color_active_tab;
+      text-decoration: none; }
+  }
+
+  // Mobile/Offcanvas styles
+  @media (max-width: 991.98px) {
+    .offcanvas-body {
+      background: $color_header_background;
+      padding: 0;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin: 0;
+    }
+    a.nav-link {
+      padding: 10px 20px;
+      color: white !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      &:hover {
+        background: $color_hover_tab_background;
+        color: $color_hover_tab !important;
+      }
+      &.active {
+        background: $color_active_tab_background;
+        color: $color_active_tab !important;
+      }
+    }
+  }
 }
 
 #footer {
