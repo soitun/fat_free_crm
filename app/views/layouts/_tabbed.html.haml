@@ -1,13 +1,18 @@
 .navbar.navbar-expand-lg.tabs
   .container-fluid
-    %button{"class" => "navbar-toggler", "type" => "button", "data-bs-toggle" => "collapse", "data-bs-target" => "#navbarNav", "aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation"}
+    %button.navbar-toggler{"type" => "button", "data-bs-toggle" => "offcanvas", "data-bs-target" => "#offcanvasNavbar", "aria-controls" => "offcanvasNavbar", "aria-label" => "Toggle navigation"}
       %span.navbar-toggler-icon
-    %ul.navbar-nav.collapse.navbar-collapse.me-auto.mb-2.mg-lg-0{id:"navbarNav"}
-      - tabs.each do |tab|
-        %li.nav-item
-          = link_to(tab[:url], class: tab[:active] ? "nav-link active" : "nav-link") do
-            %i.fa{class: tab[:icon]}
-            = t(tab[:text])
+    .offcanvas.offcanvas-start#offcanvasNavbar{"tabindex" => "-1", "aria-labelledby" => "offcanvasNavbarLabel"}
+      .offcanvas-header
+        %h5.offcanvas-title#offcanvasNavbarLabel Fat Free CRM
+        %button.btn-close{"type" => "button", "data-bs-dismiss" => "offcanvas", "aria-label" => "Close"}
+      .offcanvas-body
+        %ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          - tabs.each do |tab|
+            %li.nav-item
+              = link_to(tab[:url], class: tab[:active] ? "nav-link active" : "nav-link") do
+                %i.fa{class: tab[:icon]}
+                = t(tab[:text])
 
 = show_flash
 %div{ id: 'primary-application-pane' }
