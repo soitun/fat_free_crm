@@ -50,6 +50,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'country_select'
   gem.add_dependency 'rack-attack'
   gem.add_dependency 'addressable'
+  gem.add_dependency 'validates_lengths_from_database'
 
   # FatFreeCRM has released it's own versions of the following gems:
   #-----------------------------------------------------------------
