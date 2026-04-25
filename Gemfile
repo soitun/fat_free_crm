@@ -107,7 +107,6 @@ gem 'bootsnap', require: false
 gem 'devise', '~> 5.0'
 gem 'devise-i18n'
 gem "devise-encryptable"
-gem "devise-security"
 gem 'tzinfo-data', platforms: %i[windows jruby]
 gem 'activejob'
 gem 'ransack_ui', '~> 3.0.0'
@@ -135,5 +134,4 @@ gem 'connection_pool', '< 3'
 
 gem "addressable", "~> 2.8"
 
-gem 'rack-attack'
 gem "solid_queue"
